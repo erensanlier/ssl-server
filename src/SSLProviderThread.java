@@ -35,6 +35,7 @@ public class SSLProviderThread extends Thread {
 
         } catch (Exception e) {
             e.printStackTrace();
+            return;
         }
         System.out.println("Successful auth! Starting to send the certificate.");
         outputStream.println("Success");
@@ -69,25 +70,6 @@ public class SSLProviderThread extends Thread {
         }
         credentialsFileReader.close();
         return auth;
-    }
-
-
-    /**
-     * Sends a prompt message to client and receives credentials of the client
-     *
-     * @return credentials of the user, i.e, username and password separated by a space character
-     */
-    public String askForCredentials() {
-        String response = "";
-        try {
-            outputStream.println("You are connected to the server. Please send your credentials (username and password separated by a single space character) to receive the SSL Certificate");
-            outputStream.flush();
-            response = inputStream.readLine();
-            System.out.println(response);
-        } catch (IOException e) {
-            System.err.println("Client on address " + socket.getRemoteSocketAddress() + " disconnected, executing the certificate sender thread.");
-        }
-        return response;
     }
 
 

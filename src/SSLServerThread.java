@@ -51,6 +51,8 @@ public class SSLServerThread extends Thread
             for (char c : messageAsCharArray) {
                 os.write(c);
                 os.flush();
+                int response = is.read();
+                if(!(response == 1)) break;
             }
             os.write("\0");
             os.flush();
@@ -92,6 +94,6 @@ public class SSLServerThread extends Thread
             {
                 System.out.println("Socket Close Error");
             }
-        }//end finally
+        }
     }
 }

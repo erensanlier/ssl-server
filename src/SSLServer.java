@@ -24,7 +24,6 @@ public class SSLServer extends Thread
     private final String SK_PASS = "keypass";
     private SSLServerSocket sslSocket;
     private SSLServerSocketFactory sslFactory;
-    //private ServerControlPanel serverControlPanel;
 
 
     public SSLServer(int port)

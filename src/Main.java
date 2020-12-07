@@ -27,8 +27,6 @@ public class Main
         int portNumber = 1024 + ((KUSIS_ID + DD_MM_YY) % 65535);
         SSLServer sslServer = new SSLServer(portNumber);
         sslServer.start();
-
-
     }
 
 }
