@@ -32,10 +32,6 @@ public class SSLServer extends Thread
 
         try
         {
-
-            //serverControlPanel = new ServerControlPanel("hello server!");
-
-
             /*
             Instance of SSL protocol with TLS variance
              */

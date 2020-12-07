@@ -20,12 +20,13 @@ import java.io.*;
 
 public class SSLServerThread extends Thread
 {
-
-    private final String SERVER_REPLY = "Hello Client";
     private SSLSocket sslSocket;
     private String line = new String();
     private BufferedReader is;
     private BufferedWriter os;
+    private final String KUSIS_USERNAME = "esanlier16";
+    private final String KUSIS_ID = "60326";
+
     public SSLServerThread(SSLSocket s)
     {
         sslSocket = s;
@@ -37,7 +38,6 @@ public class SSLServerThread extends Thread
         {
             is = new BufferedReader(new InputStreamReader(sslSocket.getInputStream()));
             os = new BufferedWriter(new OutputStreamWriter(sslSocket.getOutputStream()));
-
         }
         catch (IOException e)
         {
@@ -46,11 +46,14 @@ public class SSLServerThread extends Thread
 
         try
         {
-            line = is.readLine();
-            os.write(SERVER_REPLY);
+            String message = KUSIS_USERNAME + KUSIS_ID;
+            char[] messageAsCharArray = message.toCharArray();
+            for (char c : messageAsCharArray) {
+                os.write(c);
+                os.flush();
+            }
+            os.write("\0");
             os.flush();
-            System.out.println("Client " + sslSocket.getRemoteSocketAddress() + " sent : " + line);
-
 
         }
         catch (IOException e)

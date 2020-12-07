@@ -15,9 +15,20 @@
  */
 public class Main
 {
+    static final int KUSIS_ID = 60326;
+    static final int DD_MM_YY = 210498;
+
     public static void main(String args[])
     {
-        SSLServer s = new SSLServer(4444);
+        SSLProvider sslProvider = new SSLProvider(4444);
+        sslProvider.start();
+
+        // ID + Date divided to available port number and 1024 added to be safe
+        int portNumber = 1024 + ((KUSIS_ID + DD_MM_YY) % 65535);
+        SSLServer sslServer = new SSLServer(portNumber);
+        sslServer.start();
+
+
     }
 
 }
