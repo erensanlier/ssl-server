@@ -21,7 +21,7 @@ public class SSLProviderThread extends Thread {
         boolean authenticated = false;
 
         try {
-            outputStream.println("You are connected to the server. Please send your credentials (username and password separated by a single space character) to receive the SSL Certificate");
+            outputStream.println("Connected to SSL Provider. Enter your credentials to receive the SSL certificate");
             outputStream.flush();
             while (!authenticated){
                 String credentials = inputStream.readLine();
